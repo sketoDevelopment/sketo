@@ -92,7 +92,7 @@ test('one WhatsApp message includes every cart line, variant, quantity, from-pri
   const content = (name, detail) => Object.fromEntries(['ru', 'en', 'kz'].map(locale => [locale, { name, detail }]));
   const lines = [
     { kind: 'coffee', slug: 'african', quantity: 2, unitPrice: 570000, content: content('African', '250 г') },
-    { kind: 'accessory', slug: 'kettle', variantId: 'white', quantity: 1, unitPrice: 1200000, content: content('Чайник', 'Белый') },
+    { kind: 'accessory', slug: 'kettle', sku: 'BK2714-W', variantId: 'white', quantity: 1, unitPrice: 1200000, content: content('Чайник', 'Белый') },
     { kind: 'equipment', slug: 'micra', quantity: 1, unitPrice: 230000000, priceFrom: true, content: content('Linea Micra', 'Кофемашина') },
     { kind: 'equipment', slug: 'unknown', quantity: 1, unitPrice: null, content: content('No quote', '') },
   ];
@@ -103,7 +103,14 @@ test('one WhatsApp message includes every cart line, variant, quantity, from-pri
     assert.ok(message.includes(expected), expected);
   }
   assert.ok(!message.includes('NaN'));
-  assert.ok(!/Артикул:|Item code:/.test(message));
+  assert.ok(message.includes('Артикул: BK2714-W'));
+  assert.equal((message.match(/Артикул:/g) ?? []).length, 1);
+  for (const language of ['en', 'kz']) {
+    const translated = new URL(cartOrder.buildWhatsAppCartUrl(lines, language)).searchParams.get('text');
+    assert.ok(translated.includes(`${language === 'en' ? 'SKU' : 'Артикул'}: BK2714-W`));
+  }
+  const legacy = new URL(cartOrder.buildWhatsAppCartUrl([{ ...lines[1], sku: undefined }], 'ru')).searchParams.get('text');
+  assert.ok(!legacy.includes('Артикул:'));
   for (const line of lines) assert.ok(!message.includes(line.slug));
   assert.throws(() => cartOrder.buildWhatsAppCartUrl([], 'ru'));
 });

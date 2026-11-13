@@ -53,6 +53,7 @@ export function buildWhatsAppOrderUrl(order: WhatsAppOrder) {
   const message = [
     text.intro,
     "",
+    ...(order.kind === "accessory" && order.slug.trim() ? [`${order.language === "en" ? "SKU" : "Артикул"}: ${order.slug.trim()}`] : []),
     ...(order.kind === "coffee" && order.size?.trim() ? [`${text.size}: ${order.size.trim()}`] : []),
     ...(order.kind === "accessory" && order.color?.trim() ? [`${order.language === "en" ? "Colour" : order.language === "kz" ? "Түсі" : "Цвет"}: ${order.color.trim()}`] : []),
     ...(order.price?.trim() ? [`${text.price}: ${order.price.trim()}`] : []),

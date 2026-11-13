@@ -3,6 +3,7 @@ import type { Language } from "../components/language";
 export type CartProduct = {
   kind: "coffee" | "accessory" | "equipment";
   slug: string;
+  sku?: string;
   variantId?: string;
   volumeId?: string;
   href: string;
@@ -53,6 +54,7 @@ export function decodeCart(raw: string | null): CartLine[] {
     return parsed.lines.slice(0, MAX_LINES).filter((item): item is CartLine => {
       if (!item || typeof item !== "object" || !["coffee", "accessory", "equipment"].includes(item.kind)) return false;
       if (typeof item.slug !== "string" || !item.slug || item.slug.length > 200) return false;
+      if (item.sku !== undefined && (typeof item.sku !== "string" || item.sku.length > 200)) return false;
       if (![item.variantId, item.volumeId].every(id => id === undefined || (typeof id === "string" && id.length <= 200))) return false;
       if (typeof item.href !== "string" || !/^\/(catalog|equipment|accessories)\/[a-zA-Z0-9%_-]+$/.test(item.href)) return false;
       if (typeof item.image !== "string" || item.image.length > 2048 || !/^(\/(?!\/)|https:\/\/)/.test(item.image)) return false;

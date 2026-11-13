@@ -15,6 +15,7 @@ export function buildWhatsAppCartUrl(lines: CartLine[], language: Language): str
     const amount = line.unitPrice === null ? null : line.unitPrice * line.quantity;
     return [
       `${index + 1}. ${content.name}${content.detail ? ` — ${content.detail}` : ""}`,
+      ...(line.kind === "accessory" && line.sku?.trim() ? [`${language === "en" ? "SKU" : "Артикул"}: ${line.sku.trim()}`] : []),
       `${copy.quantity}: ${line.quantity}`,
       `${copy.price}: ${formatEquipmentPrice(amount, Boolean(line.priceFrom), language)}`,
     ].join("\n");

@@ -74,7 +74,7 @@ export default function AccessoryPageClient({ item, recommendations, initialLang
           </div>
           <ProductOrderButton kind="accessory" language={language} name={content.name} slug={sku} color={`${variant.color}${selectedVolume ? ` · ${volumeLabel(selectedVolume, language)}` : ''}`} price={pricedOption.price === null ? undefined : price} productUrl={productUrl}
             unavailable={variant.availability === "out_of_stock"}
-            cartItem={{ kind: "accessory", slug: item.slug, variantId: variant.id, volumeId: selectedVolume?.id,
+            cartItem={{ kind: "accessory", slug: item.slug, sku, variantId: variant.id, volumeId: selectedVolume?.id,
               href: `/accessories/${item.slug}`, image: images[0]?.url || "/image-unavailable.svg",
               unitPrice: pricedOption.currency === "KZT" ? toMinorUnits(pricedOption.price) : null,
               content: localizeProduct(locale => ({ name: accessoryContent(item, locale).name,

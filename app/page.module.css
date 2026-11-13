@@ -356,6 +356,14 @@
   text-wrap: balance;
 }
 
+/* Activist lacks Kazakh glyphs; use one complete font for the whole quote. */
+:global(html[lang="kk"]) .quoteText {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
 .heroTagline {
   display: none;
 }
