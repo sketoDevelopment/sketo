@@ -9,9 +9,9 @@ export default function AccessoryCard({ item, language, onNavigate }: { item: Ac
   const content = accessoryContent(item, language);
   const skus = accessorySkus(item);
   return <Link href={`/accessories/${item.slug}`} className={styles.cardLink} onNavigate={onNavigate}>
-    <article className={styles.card}>
-      <div className={styles.imagePanel}><Image src={item.images[0]?.url || "/image-unavailable.svg"} alt={content.name} fill
-        sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 25vw" className={styles.image} unoptimized /></div>
+    <article className={`${styles.card} ${local.accessoryCard}`}>
+      <div className={`${styles.imagePanel} ${local.cardImagePanel}`}><Image src={item.images[0]?.url || "/image-unavailable.svg"} alt={content.name} fill
+        sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 25vw" className={`${styles.image} ${local.cardImage}`} unoptimized /></div>
       <div className={`${styles.content} ${local.cardContent}`}>
         <div className={`${styles.metaBlock} ${local.cardName}`}><p className={styles.metaLabel}>{item.brand}</p><h2 className={styles.name}>{content.name}</h2></div>
         {skus.length > 0 && <p className={local.cardSku}>{label(language, "Артикул", "SKU", "Артикул")}: {skus.join(" / ")}</p>}

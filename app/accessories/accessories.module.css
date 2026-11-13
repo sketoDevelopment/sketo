@@ -121,6 +121,9 @@
   .workflowTitle { max-width: 14ch; font-size: clamp(3rem, 9vw, 5rem); }
 }
 @media (max-width: 640px) {
+  .accessoryCard.accessoryCard { gap: .25rem; }
+  .accessoryCard .cardImagePanel { aspect-ratio: 1.5; }
+  .accessoryCard .cardImage { object-position: center bottom; transform: translateY(10px); }
   .stageContextHead { grid-template-columns: 1fr; gap: 1rem; padding-bottom: 1.5rem; }
   .stageTitle { font-size: clamp(2.5rem, 15vw, 4.5rem); }
   .stageCount { justify-self: start; }
