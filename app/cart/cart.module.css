@@ -13,6 +13,9 @@
 .iconButton:hover { color: #ce1616; }
 .scrollArea { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 2rem; }
 .items { list-style: none; margin: 0; padding: 0; }
+.cityTabs { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .75rem; }
+.cityTabs button { appearance: none; min-height: 44px; padding: .7rem .8rem; border: 1px solid #2d3134; border-radius: 0; background: transparent; color: #2d3134; font: 12px/1.2 var(--font-basis-mono); text-transform: uppercase; letter-spacing: .04em; cursor: pointer; }
+.cityTabs button[aria-pressed="true"] { background: #2d3134; color: #f2f0eb; }
 .item { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid #2d313430; }
 .item:last-child { border-bottom: 0; }
 .imageLink { display: flex; align-items: center; justify-content: center; }

@@ -16,8 +16,10 @@ function load(path, modules = {}) {
 }
 const order = load('lib/whatsapp-order.ts');
 const cartModel = load('app/cart/model.ts');
+const cities = load('app/cart/cities.ts');
 const pricing = load('lib/equipment-price.ts');
 const cartOrder = load('app/cart/whatsapp.ts', {
+  './cities': cities,
   '@/lib/equipment-price': pricing,
   '@/lib/whatsapp-order': order,
   './model': cartModel,
@@ -113,4 +115,14 @@ test('one WhatsApp message includes every cart line, variant, quantity, from-pri
   assert.ok(!legacy.includes('Артикул:'));
   for (const line of lines) assert.ok(!message.includes(line.slug));
   assert.throws(() => cartOrder.buildWhatsAppCartUrl([], 'ru'));
+});
+
+test('cart destination and message match the selected city in every language', () => {
+  const content = Object.fromEntries(['ru', 'en', 'kz'].map(language => [language, { name: 'Coffee', detail: '' }]));
+  const lines = [{ kind: 'coffee', slug: 'coffee', quantity: 1, unitPrice: 100000, content }];
+  for (const city of ['astana', 'almaty']) for (const language of ['ru', 'en', 'kz']) {
+    const url = new URL(cartOrder.buildWhatsAppCartUrl(lines, language, city));
+    assert.equal(url.pathname, `/${cities.orderCities[city].phone}`);
+    assert.ok(url.searchParams.get('text').includes(cities.orderCities[city].name[language]));
+  }
 });

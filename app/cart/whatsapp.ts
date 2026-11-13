@@ -1,9 +1,9 @@
 import type { Language } from "../components/language";
 import { formatEquipmentPrice } from "@/lib/equipment-price";
-import { WHATSAPP_NUMBER } from "@/lib/whatsapp-order";
+import { orderCities, type OrderCity } from "./cities";
 import { cartTotals, type CartLine } from "./model";
 
-export function buildWhatsAppCartUrl(lines: CartLine[], language: Language): string {
+export function buildWhatsAppCartUrl(lines: CartLine[], language: Language, city: OrderCity = "astana"): string {
   if (!lines.length) throw new Error("Cannot send an empty cart");
   const copy = {
     ru: { intro: "Здравствуйте! Хочу заказать товары из корзины Sketo:", quantity: "Количество", price: "Цена", total: "Итого", knownTotal: "Товары с указанной ценой", ending: "Подскажите, пожалуйста, наличие, доставку и окончательную стоимость." },
@@ -22,7 +22,8 @@ export function buildWhatsAppCartUrl(lines: CartLine[], language: Language): str
   });
   const totals = cartTotals(lines);
   const label = totals.needsQuote ? copy.knownTotal : copy.total;
-  const message = [copy.intro, "", ...items.flatMap(item => [item, ""]),
+  const destination = orderCities[city];
+  const message = [copy.intro, `${language === "en" ? "City" : language === "kz" ? "Қала" : "Город"}: ${destination.name[language]}`, "", ...items.flatMap(item => [item, ""]),
     `${label}: ${formatEquipmentPrice(totals.subtotal, totals.priceFrom, language)}`, "", copy.ending].join("\n");
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${destination.phone}?text=${encodeURIComponent(message)}`;
 }

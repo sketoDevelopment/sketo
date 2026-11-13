@@ -13,6 +13,8 @@ import type { Language } from "../components/language";
 import styles from "./cart.module.css";
 import { formatEquipmentPrice } from "@/lib/equipment-price";
 import { buildWhatsAppCartUrl } from "./whatsapp";
+import useOrderCity from "./useOrderCity";
+import { orderCities } from "./cities";
 
 const CartContext = createContext<(() => void) | null>(null);
 export function useOpenCart() {
@@ -50,6 +52,11 @@ export default function CartProvider({ children }: { children: React.ReactNode }
   const [language] = usePersistentLanguage();
   const t = cartCopy[language];
   const pathname = usePathname();
+  const orderCity = useOrderCity();
+  const [choosingCity, setChoosingCity] = useState(false);
+  const [cityConfirmed, setCityConfirmed] = useState(false);
+  const cityButton = useRef<HTMLButtonElement>(null);
+  const chooseCityLabel = language === "en" ? "Choose a city" : language === "kz" ? "Қаланы таңдау" : "Выбрать город";
   const [openPath, setOpenPath] = useState<string | null>(null);
   const isOpen = openPath === pathname;
   const dialog = useRef<HTMLDialogElement>(null);
@@ -98,7 +105,11 @@ export default function CartProvider({ children }: { children: React.ReactNode }
 
   useEffect(() => () => releaseDialog.current?.(), []);
 
-  return <CartContext.Provider value={() => setOpenPath(pathname)}>
+  useEffect(() => {
+    if (choosingCity) cityButton.current?.focus();
+  }, [choosingCity]);
+
+  return <CartContext.Provider value={() => { setChoosingCity(false); setCityConfirmed(false); setOpenPath(pathname); orderCity.initialize(); }}>
     {children}
     <dialog ref={dialog} className={styles.dialog} data-state={isOpen ? "open" : "closing"} aria-labelledby="cart-title" onCancel={event => { event.preventDefault(); close(); }} onClick={event => { if (event.target === event.currentTarget) close(); }}>
       <div className={styles.panel}>
@@ -110,9 +121,15 @@ export default function CartProvider({ children }: { children: React.ReactNode }
           {lines.length > 0 && <>
             <div className={styles.total} aria-live="polite"><span>{totals.needsQuote ? t.knownTotal : t.total}</span><strong>{formatEquipmentPrice(totals.subtotal, totals.priceFrom, language)}</strong></div>
             <p className={styles.note}>{totals.needsQuote && `${t.quoteNote} `}{t.note}</p>
-            <a href={buildWhatsAppCartUrl(lines, language)} className={styles.primary} target="_blank" rel="noopener noreferrer">{t.checkout}</a>
+            {choosingCity ? <>
+              <div className={styles.cityTabs} role="group" aria-label={chooseCityLabel}>
+                {(["astana", "almaty"] as const).map(city => <button ref={city === "astana" ? cityButton : undefined} key={city} type="button" aria-pressed={cityConfirmed && orderCity.city === city} onClick={() => { orderCity.select(city); setCityConfirmed(true); }}>{orderCities[city].name[language]}</button>)}
+              </div>
+              {cityConfirmed
+                ? <a href={buildWhatsAppCartUrl(lines, language, orderCity.city)} className={styles.primary} target="_blank" rel="noopener noreferrer">{t.checkout}</a>
+                : <button type="button" className={styles.primary} disabled>{t.checkout}</button>}
+            </> : <button type="button" className={styles.primary} onClick={() => setChoosingCity(true)}>{chooseCityLabel}</button>}
           </>}
-          <button type="button" className={styles.continue} onClick={close}>{t.continue}</button>
         </footer>
       </div>
     </dialog>
