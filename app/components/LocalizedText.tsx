@@ -14,7 +14,6 @@ const kazakh: Record<string, string> = {
   "Загружаем…": "Жүктелуде…",
   "Повторить загрузку": "Қайта жүктеу",
   "academy as system": "академия — біртұтас жүйе",
-  "academy": "академия",
   "sketo academy program": "sketo академиясының бағдарламасы",
   "faq": "жиі қойылатын сұрақтар",
   "next step": "келесі қадам",

@@ -9,7 +9,7 @@
 }
 
 .section {
-  padding: 4rem 6.25rem;
+  padding: 4rem 2.25rem;
 }
 
 
@@ -466,10 +466,30 @@
 }
 
 .mentorName {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   font-size: 2.2rem;
   color: #ce1616;
   text-transform: uppercase;
   margin-top: 3.5rem;
+}
+
+.interiorPhotos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.interiorPhoto { position: relative; min-width: 0; aspect-ratio: 2 / 3; overflow: hidden; }
+.interiorImage { object-fit: cover; transition: transform 350ms ease; }
+
+@media (hover: hover) {
+  .interiorPhoto:hover .interiorImage { transform: scale(1.045); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interiorImage { transition: none; }
+}
+
+@media (max-width: 900px) {
+  .interiorPhotos { grid-auto-flow: column; grid-auto-columns: 78vw; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .interiorPhoto { scroll-snap-align: start; }
 }
 
 .mentorColumns {
@@ -1409,7 +1429,7 @@
   }
 
   .section {
-    padding: 4rem 7.25rem;
+    padding: 4rem 2.25rem;
   }
 
   .hero {

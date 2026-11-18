@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
-import { accessoryStates, filterAccessories, type StaffAccessory } from './types';
+import { accessoryStates, filterAccessories, staffAccessorySkus, type StaffAccessory } from './types';
 import { changeAccessoryStates, permanentlyDeleteAccessories } from './bulk-actions';
 import { useStaffFeedback } from '../StaffFeedback';
 import staff from '../staff.module.css';
@@ -106,7 +106,7 @@ export default function AccessoriesClient({ products, query, state, listView, st
             <div className={staff.rowBody}>
               <div className={staff.tableHead}>{['Название', 'Обновлено', 'Наличие', 'Публикация'].map((text, index) => <div key={text} className={index === 0 ? staff.tableColMain : staff.tableCol}><span className={staff.rowFieldLabel}>{text}</span></div>)}</div>
               <div className={staff.tableRow}>
-                <div className={staff.tableColMain}><div className={staff.rowTitleBlock}><h2 className={staff.rowTitle}>{p.name}</h2></div></div>
+                <div className={staff.tableColMain}><div className={staff.rowTitleBlock}><h2 className={staff.rowTitle}>{p.name}</h2><p className={staff.rowSku}>Артикул: {staffAccessorySkus(p).join(' / ') || 'не указан'}</p></div></div>
                 <div className={staff.tableCol}><span className={staff.rowFieldValue}>{updated}</span></div>
                 <div className={staff.tableCol}><span className={`${staff.status} ${staff[`status_${stock}`]}`}>{stock === 'in_stock' ? 'В наличии' : 'Нет в наличии'}</span></div>
                 <div className={staff.tableCol}><span className={`${staff.editorialBadge} ${staff[`editorial_${editorial}`]}`}>{editorial === 'archived' ? 'Архив / корзина' : accessoryStates[editorial]}</span></div>

@@ -18,7 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const origin = getSiteUrl();
   const rows = await getPublishedProducts();
   return [
-    ...["/", "/catalog", "/equipment", "/b2b", "/academy", "/contacts", "/why"].map((path) => ({ url: new URL(path, origin).href })),
+    ...["/", "/catalog", "/equipment", "/b2b", "/academy", "/academy/author", "/academy/sca", "/contacts", "/why"].map((path) => ({ url: new URL(path, origin).href })),
     ...rows.map((product) => ({ url: new URL(publicProductPath(product.type, product.slug), origin).href, lastModified: product.updatedAt })),
   ];
 }

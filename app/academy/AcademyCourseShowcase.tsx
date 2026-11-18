@@ -3,29 +3,21 @@
 import { useId, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AcademyCourses from "./AcademyCourses";
+import AcademyDirections from "./AcademyDirections";
+import type { Language } from "../components/language";
 import styles from "./page.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type AcademyCourse = {
-  title: string;
-  level: string;
-  format: string;
-  price: string;
-  lead: string;
-  details: readonly string[];
-};
-
 type AcademyCourseShowcaseProps = {
-  courses: readonly AcademyCourse[];
+  language: Language;
   displayLabel: string;
   displayLines: readonly string[];
   introTexts: readonly string[];
 };
 
 export default function AcademyCourseShowcase({
-  courses,
+  language,
   displayLabel,
   displayLines,
   introTexts,
@@ -89,7 +81,7 @@ export default function AcademyCourseShowcase({
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [svgHeight]);
 
   return (
     <div ref={showcaseRef} className={styles.courseShowcase}>
@@ -179,7 +171,7 @@ export default function AcademyCourseShowcase({
           ))}
         </div>
 
-        <AcademyCourses courses={courses} />
+        <AcademyDirections language={language} />
       </div>
     </div>
   );

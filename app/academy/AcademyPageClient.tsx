@@ -53,74 +53,7 @@ const content = {
     ],
     courseIntroTexts: [
       "Академия бағдарламалары жаңадан бастағандарға мамандықты нөлден меңгеруге, ал тәжірибелі баристаларға тұрақты практика, дәмді тану және жабдықты түсіну арқылы келесі деңгейге көтерілуге көмектеседі.",
-      "Әр курсты ашып, кімге арналғанын, қандай форматта өтетінін және қандай дағдылар беретінін көре аласыз.",
-    ],
-    courses: [
-      {
-        title: "Бариста дағдылары",
-        level: "бастапқы",
-        format: "офлайн",
-        price: "50 000 ₸",
-        lead: "Мамандыққа енді қадам басып, эспрессо мен сүтпен сенімді жұмыс істегісі келетіндерге арналған негіз.",
-        details: [
-          "экстракция мен рецептура негіздері",
-          "эспрессо және сүтті сусындар",
-          "жұмыс орны және негізгі жұмыс тәртібі",
-          "дәмді және жиі кездесетін қателерді түсіну",
-        ],
-      },
-      {
-        title: "Бариста дағдылары",
-        level: "орта",
-        format: "офлайн",
-        price: "80 000 ₸",
-        lead: "Жұмыс істеп жүрген баристаларға арналған келесі деңгей: тұрақтылық, жылдамдық және дәммен дәлірек жұмыс істеу.",
-        details: [
-          "эспрессоны терең баптау",
-          "ауысым бойы нәтижені тұрақты ұстау",
-          "сенсорика және кеседегі кофені бағалау",
-          "жылдамдық, тазалық және сервис стандарттары",
-        ],
-      },
-      {
-        title: "Баламалы дайындау",
-        level: "бастапқы",
-        format: "офлайн",
-        price: "50 000 ₸",
-        lead: "Қолмен кофе дайындауға кіріспе: негізгі қағидалардан рецепт бойынша сенімді дайындауға дейін.",
-        details: [
-          "су, ұнтақтау және арақатынастар",
-          "воронка және негізгі дайындау әдістері",
-          "рецептті түсіну және түзету",
-          "дәм, теңгерім және кеседегі тазалық",
-        ],
-      },
-      {
-        title: "Баламалы дайындау",
-        level: "орта",
-        format: "офлайн",
-        price: "80 000 ₸",
-        lead: "Баламалы әдістермен тереңірек жұмыс істеп, экстракцияны саналы басқарғысы келетіндерге арналған курс.",
-        details: [
-          "күрделі рецептер және калибрлеу",
-          "қышқылдық пен қоюлықты басқару",
-          "әдістер мен сүзгілерді салыстыру",
-          "сенсорлық талдау және ұсынуды түзету",
-        ],
-      },
-      {
-        title: "Үйде кофе дайындау",
-        level: "негіз",
-        format: "қысқа курс",
-        price: "15 000 ₸",
-        lead: "Үйге арналған ықшам формат: кәсіби барсыз дәмді кофе дайындау жолы.",
-        details: [
-          "үйде кофе дайындауға арналған жабдық",
-          "қарапайым әрі тиімді рецептер",
-          "жиі кездесетін қателер және олардан сақтану",
-          "дәмді өз талғамыңызға бейімдеу",
-        ],
-      },
+      "Оқу бағытын таңдаңыз: Sketo авторлық курстары немесе SCA курстары. Ішінде бағдарламалар, оқу ұзақтығы және бағасы көрсетілген.",
     ],
     mentorsEyebrow: "тәлімгерлер",
     mentorLabels: {
@@ -144,7 +77,7 @@ const content = {
           "сенсорика және дәмді бағалау",
           "бар командасын оқыту стандарттары",
         ],
-        note: "Бариста чемпионаттарының қатысушысы және жүлдегері. Баристаларды жарыстарға дайындайды және чемпионаттарда төрелік етеді.",
+        note: "Бариста чемпионаттарының қатысушысы және жүлдегері. Баристаларды жарыстарға дайындайды және чемпионаттарда төрелік етеді. SCA-ның 3 модулі бойынша авторизацияланған тренер.",
       },
       {
         name: "Ануар Асланұлы",
@@ -205,7 +138,7 @@ const content = {
     audienceRightTitle: "Зачем?",
     audience: [
       "начинающим бариста",
-      "работающим специалистам",
+      "действующим специалистам",
       "любителям кофе дома",
       "командам и компаниям",
     ],
@@ -225,74 +158,7 @@ const content = {
     ],
     courseIntroTexts: [
       "Программы академии собраны так, чтобы новичок мог зайти в профессию с нуля, а действующий бариста перейти на следующий уровень через стабильную практику, вкус и понимание оборудования.",
-      "Каждый курс можно раскрыть и посмотреть: для кого он подходит, в каком формате проходит и какие навыки дает на выходе.",
-    ],
-    courses: [
-      {
-        title: "Навыки бариста",
-        level: "начальный",
-        format: "офлайн",
-        price: "50 000 ₸",
-        lead: "База для тех, кто только входит в профессию и хочет уверенно работать с эспрессо и молоком.",
-        details: [
-          "основы экстракции и рецептуры",
-          "эспрессо и молочные напитки",
-          "рабочая станция и базовый workflow",
-          "понимание вкуса и типовых ошибок",
-        ],
-      },
-      {
-        title: "Навыки бариста",
-        level: "средний",
-        format: "офлайн",
-        price: "80 000 ₸",
-        lead: "Следующий уровень для действующих бариста: стабильность, скорость и более точная работа со вкусом.",
-        details: [
-          "углубленная настройка эспрессо",
-          "контроль повторяемости в смене",
-          "сенсорика и оценка чашки",
-          "скорость, чистота и стандарты сервиса",
-        ],
-      },
-      {
-        title: "Альтернатива",
-        level: "начальный",
-        format: "офлайн",
-        price: "50 000 ₸",
-        lead: "Вход в manual brewing: от базовых принципов до уверенного заваривания по рецепту.",
-        details: [
-          "вода, помол и соотношения",
-          "воронка и базовые методы заваривания",
-          "чтение рецепта и корректировки",
-          "вкус, баланс и чистота чашки",
-        ],
-      },
-      {
-        title: "Альтернатива",
-        level: "средний",
-        format: "офлайн",
-        price: "80 000 ₸",
-        lead: "Курс для тех, кто хочет глубже работать с альтернативой и осознанно управлять экстракцией.",
-        details: [
-          "продвинутые рецепты и калибровка",
-          "управление кислотностью и телом",
-          "сравнение методов и фильтров",
-          "сенсорный разбор и корректировка подачи",
-        ],
-      },
-      {
-        title: "Home Brew",
-        level: "база",
-        format: "короткий курс",
-        price: "15 000 ₸",
-        lead: "Компактный формат для дома: как готовить вкусный кофе без профессиональной стойки.",
-        details: [
-          "оборудование для домашнего кофе",
-          "простые рабочие рецепты",
-          "частые ошибки и как их избежать",
-          "как настроить вкус под себя",
-        ],
-      },
+      "Выберите направление: авторские курсы Sketo или курсы SCA. Внутри — программы, продолжительность и стоимость обучения.",
     ],
     mentorsEyebrow: "mentors",
     mentorLabels: {
@@ -316,7 +182,7 @@ const content = {
           "сенсорика и оценка вкуса",
           "стандарты обучения bar team",
         ],
-        note: "Участник и призер чемпионатов бариста. Готовит бариста к соревнованиям и судит чемпионаты.",
+        note: "Участник и призер чемпионатов бариста. Готовит бариста к соревнованиям и судит чемпионаты. Авторизованный тренер SCA по 3 модулям.",
       },
       {
         name: "Ануар Асланұлы",
@@ -391,74 +257,7 @@ const content = {
     courseDisplayLines: ["TRAINING", "SYSTEM", "FOR", "REAL", "SKILLS"],
     courseIntroTexts: [
       "The academy programs are structured so a beginner can enter the profession from zero, while a working barista can move to the next level through stable practice, taste, and equipment understanding.",
-      "Each course can be expanded to see who it fits, what format it runs in, and which skills it builds by the end.",
-    ],
-    courses: [
-      {
-        title: "Barista skills",
-        level: "beginner",
-        format: "offline",
-        price: "50 000 ₸",
-        lead: "A foundation for those entering the profession and wanting to work confidently with espresso and milk.",
-        details: [
-          "basics of extraction and recipe logic",
-          "espresso and milk drinks",
-          "station setup and basic workflow",
-          "flavor understanding and common mistakes",
-        ],
-      },
-      {
-        title: "Barista skills",
-        level: "intermediate",
-        format: "offline",
-        price: "80 000 ₸",
-        lead: "The next step for working baristas: consistency, speed, and more precise flavor control.",
-        details: [
-          "advanced espresso calibration",
-          "shift-to-shift repeatability control",
-          "sensory skills and cup evaluation",
-          "speed, cleanliness, and service standards",
-        ],
-      },
-      {
-        title: "Alternative brewing",
-        level: "beginner",
-        format: "offline",
-        price: "50 000 ₸",
-        lead: "An entry into manual brewing, from first principles to confident brewing by recipe.",
-        details: [
-          "water, grind, and brew ratios",
-          "pour-over and core brewing methods",
-          "reading a recipe and making corrections",
-          "flavor balance and clean cups",
-        ],
-      },
-      {
-        title: "Alternative brewing",
-        level: "intermediate",
-        format: "offline",
-        price: "80 000 ₸",
-        lead: "For those who want deeper control over filter coffee and extraction decisions.",
-        details: [
-          "advanced recipes and calibration",
-          "managing acidity and body",
-          "method and filter comparison",
-          "sensory analysis and service adjustment",
-        ],
-      },
-      {
-        title: "Home Brew",
-        level: "core",
-        format: "short course",
-        price: "15 000 ₸",
-        lead: "A compact home format on how to brew great coffee without a professional bar.",
-        details: [
-          "equipment for home coffee",
-          "simple working recipes",
-          "common mistakes and how to avoid them",
-          "how to shape flavor to your preference",
-        ],
-      },
+      "Choose Sketo courses or SCA courses to explore the programs, duration and pricing.",
     ],
     mentorsEyebrow: "mentors",
     mentorLabels: {
@@ -482,7 +281,7 @@ const content = {
           "sensory and taste evaluation",
           "bar team training standards",
         ],
-        note: "Barista championship participant and prize winner. Prepares baristas for competitions and judges championships.",
+        note: "Barista championship participant and prize winner. Prepares baristas for competitions and judges championships. Authorized SCA trainer for 3 modules.",
       },
       {
         name: "Anuar Aslanuly",
@@ -634,7 +433,7 @@ export default function AcademyPageClient({
           <p className={styles.eyebrow}><LocalizedText text="sketo academy program" /></p>
         </div>
         <AcademyCourseShowcase
-          courses={copy.courses}
+          language={currentLanguage}
           displayLabel={copy.courseDisplayLabel}
           displayLines={copy.courseDisplayLines}
           introTexts={copy.courseIntroTexts}
@@ -702,6 +501,22 @@ export default function AcademyPageClient({
                 />
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.interiorSection}`} aria-label={language === "kz" ? "Академия интерьері" : language === "en" ? "Academy interior" : "Интерьер академии"}>
+        <div className={styles.interiorPhotos}>
+          {[1, 2, 3].map((number) => (
+            <div className={styles.interiorPhoto} key={number}>
+              <Image
+                src={`/photo/academy/academy%20photos/${number}.jpg`}
+                alt={language === "kz" ? `Академия интерьері, ${number}-сурет` : language === "en" ? `Academy interior, photo ${number}` : `Интерьер академии, фото ${number}`}
+                fill
+                sizes="(max-width: 900px) 78vw, 30vw"
+                className={styles.interiorImage}
+              />
+            </div>
           ))}
         </div>
       </section>

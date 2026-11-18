@@ -1222,3 +1222,4 @@
     color: #f2f0eb;
   }
 }
+.rowSku { margin: .4rem 0 0; color: #2d3134b3; font: 11px/1.5 var(--font-basis-mono); overflow-wrap: anywhere; }

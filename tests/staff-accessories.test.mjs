@@ -17,7 +17,13 @@ function load(path, modules = {}) {
   return exports;
 }
 
-const { filterAccessories, accessoryCategories } = load('app/staff/accessories/types.ts');
+const { filterAccessories, accessoryCategories, staffAccessorySkus } = load('app/staff/accessories/types.ts');
+test('staff list shows actual colour and volume SKUs without internal placeholders or duplicates', () => {
+  const product = { variants: [{ id: 'white', sku: ' BK2714 ' }, { id: 'black', sku: 'BK2715' }] };
+  assert.equal(staffAccessorySkus(product).join(' / '), 'BK2714 / BK2715');
+  assert.equal(staffAccessorySkus({ ...product, volumes: [{ skuByVariant: { white: 'SMALL-W', black: 'SMALL-B' } }, { skuByVariant: { white: 'SMALL-W' } }] }).join(' / '), 'SMALL-W / SMALL-B');
+  assert.equal(staffAccessorySkus({ variants: [{ id: 'new', sku: 'ACC-12345678-1234-1234-1234-123456789abc' }] }).length, 0);
+});
 test('search includes English and Kazakh translation text', () => {
   const items = [{ name: 'Чайник', brand: 'muvna', description: '', category: 'kettles', variants: [], searchText: 'Pour-over kettle Кофеге арналған шәйнек' }];
   assert.equal(filterAccessories(items, 'pour-over kettle', '', '').length, 1);

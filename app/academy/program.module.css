@@ -1,0 +1,6 @@
+.courseMeta { display: flex; flex-wrap: wrap; gap: .5rem 2rem; margin: -.25rem 0 1rem; color: #66685f; font: 12px/1.5 var(--font-basis-mono); }
+.price { color: #ce1616; }
+.details { max-width: 68ch; margin: 1rem 0 0; padding-left: 1.2rem; font-size: 16px; line-height: 1.8; list-style: disc; }
+.details li + li { margin-top: .4rem; }
+.signup { width: 220px; max-width: 100%; margin-top: 1.5rem; }
+@media (max-width: 400px) { .details { font-size: 15px; } }

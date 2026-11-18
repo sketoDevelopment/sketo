@@ -29,6 +29,13 @@ export const accessoryStates = {
   draft: "Черновик", review: "На проверке", published: "Опубликовано", archived: "Архив",
 };
 
+export function staffAccessorySkus(product: Pick<StaffAccessory, "variants" | "volumes">): string[] {
+  const skus = product.volumes?.length
+    ? product.volumes.flatMap(volume => product.variants.map(variant => volume.skuByVariant ? volume.skuByVariant[variant.id] ?? "" : variant.sku))
+    : product.variants.map(variant => variant.sku);
+  return [...new Set(skus.map(sku => sku.trim()).filter(sku => sku && !/^ACC-[0-9a-f-]{36}$/i.test(sku)))];
+}
+
 export const accessoryCategories: Record<string, string> = {
   "coffee-makers": "Кофеварки", grinders: "Кофемолки", baskets: "Корзины и портафильтры",
   storage: "Хранение кофе", "milk-tools": "Для молока и латте-арта",
